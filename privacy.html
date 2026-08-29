@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — FilsOnly</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#121018;
+    --card:#1D1A26;
+    --violet:#8B6BFF;
+    --gold:#FFC940;
+    --ink:#F4F1FB;
+    --ink-dim:#B8B2CC;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'Inter', sans-serif; line-height:1.7;
+    padding:0 0 80px;
+  }
+  .wrap{ max-width:720px; margin:0 auto; padding:0 24px; }
+  header{
+    padding:32px 0; border-bottom:1px solid #ffffff14; margin-bottom:40px;
+  }
+  .logo-row{ display:flex; align-items:center; gap:10px; }
+  .logo-mark{
+    width:30px; height:30px; border-radius:50%;
+    background:conic-gradient(from 180deg, var(--gold), #FFEFAF, var(--gold));
+  }
+  .brand{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:19px; }
+  a{ color:var(--gold); }
+  h1{ font-family:'Space Grotesk', sans-serif; font-size:32px; margin-bottom:6px; }
+  .updated{ color:var(--ink-dim); font-size:14px; margin-bottom:36px; }
+  h2{
+    font-family:'Space Grotesk', sans-serif; font-size:20px; font-weight:600;
+    margin:36px 0 12px;
+  }
+  p, li{ color:var(--ink-dim); font-size:15.5px; margin-bottom:14px; }
+  ul{ padding-left:22px; margin-bottom:14px; }
+  strong{ color:var(--ink); }
+  .callout{
+    background:var(--card); border:1px solid #8B6BFF33; border-radius:14px;
+    padding:20px 22px; margin:24px 0; color:var(--ink);
+  }
+  footer{
+    margin-top:48px; padding-top:24px; border-top:1px solid #ffffff14;
+    color:#726C8C; font-size:13px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="/" class="logo-row" style="text-decoration:none;">
+      <div class="logo-mark"></div>
+      <div class="brand" style="color:var(--ink);">FilsOnly</div>
+    </a>
+  </header>
+
+  <h1>Privacy Policy</h1>
+  <div class="updated">Last updated: August 19, 2026</div>
+
+  <p>FilsOnly ("we," "our," or "the app") is a personal AI executive assistant application. This policy explains what data the app accesses, how it's used, and — just as importantly — what we deliberately do <strong>not</strong> collect or store.</p>
+
+  <div class="callout">
+    <strong>The short version:</strong> FilsOnly is built on a "bring-your-own-key" model. Your email data, calendar data, and AI usage are processed directly between your device, your email provider's servers (Microsoft or Google), and your chosen AI provider's servers. We do not operate a general backend server, and we do not receive, store, or have access to your email content, calendar data, or AI conversations at any point — with one narrow exception: a stateless function we operate generates numerical "embeddings" for memory/search features, described below. This function stores nothing and sees only text you send it for conversion, never your inbox directly.
+  </div>
+
+  <h2>What data the app accesses</h2>
+
+  <p><strong>Microsoft Outlook / Microsoft 365 (via Microsoft Graph API)</strong></p>
+  <p>With your explicit consent through Microsoft's OAuth sign-in flow, the app accesses:</p>
+  <ul>
+    <li>Your email inbox (to display and triage messages)</li>
+    <li>Your calendar (to display your daily schedule)</li>
+    <li>The ability to send email on your behalf (only when you explicitly tap "Send" on a drafted reply)</li>
+  </ul>
+  <p>This access is governed by Microsoft's own authentication system. We never see or store your Microsoft account password. You can revoke this access at any time through your Microsoft account security settings, or by disconnecting within the app.</p>
+
+  <p><strong>Google Gmail (via Gmail API)</strong></p>
+  <p>With your explicit consent through Google's OAuth sign-in flow, the app accesses:</p>
+  <ul>
+    <li>Your Gmail inbox (to display and triage messages) — read-only access</li>
+    <li>The ability to send email on your behalf (only when you explicitly tap "Send" on a drafted reply)</li>
+  </ul>
+  <p>This access is governed by Google's own authentication system. We never see or store your Google account password. The app does not access your Gmail calendar, contacts, or any other Google service beyond the two Gmail scopes described above. You can revoke this access at any time through your Google Account's <a href="https://myaccount.google.com/permissions">third-party access settings</a>, or by disconnecting within the app.</p>
+  <p>You connect either Outlook or Gmail (not both simultaneously in the current version), depending on which email provider you choose during sign-in.</p>
+
+  <p><strong>Your AI provider (Anthropic or OpenAI)</strong></p>
+  <p>You provide your own API key for an AI provider of your choice. When the app triages emails or drafts replies, it sends relevant email content directly from your device to your chosen AI provider's servers, using your own API key and billed to your own account. We do not proxy, log, or have visibility into these requests.</p>
+
+  <p><strong>Memory and search features (embeddings)</strong></p>
+  <p>To power features that let you ask about past emails or receive proactive reminders about conversations that need follow-up, the app converts email text into numerical representations called "embeddings." This is the one part of FilsOnly that is not entirely peer-to-peer: generating an embedding requires a small server-side function that we operate, which calls OpenAI's embedding API on your behalf using <strong>our own API key, not yours</strong>.</p>
+  <p>Specifics of how this works:</p>
+  <ul>
+    <li>Our server-side function is stateless — it receives text, returns a numerical vector, and stores nothing. We do not keep a copy of your email content on our servers at any point.</li>
+    <li>The resulting embedding vectors are stored locally on your device, alongside your other email data, and are used for on-device similarity search only.</li>
+    <li>This function exists solely to generate embeddings and does not have access to your inbox directly — it only ever sees the specific text your device sends it for conversion.</li>
+  </ul>
+  <p>If you'd prefer not to use this feature, you can decline to use memory/search features within the app; core triage and reply functionality does not depend on it.</p>
+
+  <h2>What data is stored, and where</h2>
+  <p>All data used by FilsOnly is stored <strong>locally on your device</strong> using on-device storage (SQLite) and secure encrypted storage (for your API key). This includes:</p>
+  <ul>
+    <li>Cached email triage labels and status (new / replied / closed)</li>
+    <li>Follow-up and reminder entries you create</li>
+    <li>Your AI provider settings and API key (stored using your device's secure credential storage)</li>
+    <li>Sign-in tokens for your Microsoft account</li>
+  </ul>
+  <p>None of this data is transmitted to or stored on any server operated by FilsOnly, because FilsOnly does not operate a backend server for personal use of the app.</p>
+
+  <h2>Background sync and notifications</h2>
+  <p>If you enable background sync, the app periodically checks your inbox in the background (even when closed) using the same direct device-to-Microsoft and device-to-AI-provider connections described above, and may show you a local notification for urgent items. This processing happens entirely on your device; no data is sent to us as part of this feature.</p>
+
+  <h2>Data sharing</h2>
+  <p>We do not sell, rent, or share your data with third parties. We have no access to your email content, calendar data, or AI usage to share in the first place.</p>
+
+  <h2>Data deletion</h2>
+  <p>Because your data is stored locally on your device, uninstalling the app removes all locally stored data. Disconnecting your Microsoft or Google account within the app (or from that account's own security settings) revokes the app's access to your email and calendar.</p>
+
+  <h2>Children's privacy</h2>
+  <p>FilsOnly is not directed at children under 13, and we do not knowingly collect data from children.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, we'll update the "Last updated" date above. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy or the app's data practices can be sent to <a href="mailto:hello@filsonly.com">hello@filsonly.com</a>.</p>
+
+  <footer>
+    FilsOnly is an independent app and is not affiliated with, endorsed by, or sponsored by Microsoft Corporation, Google LLC, Anthropic, or OpenAI. Microsoft, Outlook, and Microsoft 365 are trademarks of Microsoft Corporation. Google and Gmail are trademarks of Google LLC.
+  </footer>
+</div>
+</body>
+</html>
