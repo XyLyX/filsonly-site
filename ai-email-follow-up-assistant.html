@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Email Follow-Up Assistant — FilsOnly</title>
+<meta name="description" content="Not another AI inbox. FilsOnly is the AI assistant that remembers the follow-ups your triage tools forget about.">
+<meta property="og:title" content="AI Email Follow-Up Assistant — FilsOnly">
+<meta property="og:description" content="Not another AI inbox. FilsOnly is the AI assistant that remembers the follow-ups your triage tools forget about.">
+<meta property="og:url" content="https://filsonly.com/ai-email-follow-up-assistant">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://filsonly.com/assets/logo-mark.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI Email Follow-Up Assistant — FilsOnly">
+<meta name="twitter:description" content="Not another AI inbox. FilsOnly is the AI assistant that remembers the follow-ups your triage tools forget about.">
+<link rel="canonical" href="https://filsonly.com/ai-email-follow-up-assistant">
+<link rel="icon" type="image/png" href="/assets/logo-mark.png">
+<style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap');
+  :root{
+    --bg:#0D0C12; --card:#18151F; --card-line:#ffffff14;
+    --violet:#8B6BFF; --violet-soft:#8B6BFF22; --gold:#FFC940; --coral:#FF5D6C; --mint:#2EE6A8;
+    --ink:#F4F1FB; --ink-dim:#B8B2CC; --ink-faint:#726C8C; --radius:20px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--bg); color:var(--ink); font-family:'Inter', sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  h1,h2,h3,.display{ font-family:'Space Grotesk', sans-serif; letter-spacing:-0.02em; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1000px; margin:0 auto; padding:0 28px; }
+  @media (prefers-reduced-motion: reduce){ *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; } }
+  body::before{ content:""; position:fixed; inset:0; background: radial-gradient(circle at 12% 8%, #8B6BFF2e, transparent 42%), radial-gradient(circle at 88% 20%, #FFC9401c, transparent 38%), radial-gradient(circle at 50% 95%, #2EE6A814, transparent 45%); pointer-events:none; z-index:0; }
+
+  nav{ position:sticky; top:0; z-index:50; backdrop-filter: blur(14px); background:#0D0C1299; border-bottom:1px solid var(--card-line); }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:76px; max-width:1180px; }
+  .logo{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:19px; cursor:pointer; }
+  .logo-mark{ width:32px; height:32px; object-fit:contain; filter:drop-shadow(0 4px 14px #8B6BFF55); }
+  .navlinks{ display:flex; gap:34px; font-size:14.5px; color:var(--ink-dim); font-weight:500; }
+  .navlinks a:hover{ color:var(--ink); }
+  .btn{ padding:11px 22px; border-radius:999px; font-weight:600; font-size:14.5px; display:inline-flex; align-items:center; gap:8px; cursor:pointer; border:none; }
+  .btn-primary{ background:linear-gradient(135deg, var(--violet), #6B4EE6); color:#fff; box-shadow:0 6px 24px #8B6BFF4d; }
+  .btn-ghost{ background:#ffffff10; color:var(--ink); border:1px solid #ffffff20; }
+  .nav-badge{ font-family:'JetBrains Mono'; font-size:10.5px; font-weight:700; background:var(--coral); color:#0D0C12; padding:3px 8px; border-radius:6px; margin-left:6px; }
+
+  .hero{ position:relative; z-index:1; padding:76px 0 20px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:var(--violet-soft); border:1px solid #8B6BFF44; color:#C4B5FF; font-size:13px; font-weight:600; padding:7px 14px; border-radius:999px; margin-bottom:26px; }
+  .dot{ width:6px; height:6px; border-radius:50%; background:var(--mint); }
+  .hero h1{ font-size:clamp(32px, 4.4vw, 52px); line-height:1.1; font-weight:700; max-width:760px; }
+  .hero h1 .accent{ background:linear-gradient(100deg, var(--gold), var(--coral)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero p.lede{ font-size:18px; color:var(--ink-dim); max-width:640px; margin:22px 0 32px; line-height:1.65; }
+  .hero-cta{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  .hero-cta .btn{ padding:15px 26px; font-size:15px; }
+
+  section{ position:relative; z-index:1; padding:64px 0; }
+  .section-head{ max-width:680px; margin-bottom:36px; }
+  .section-eyebrow{ color:var(--gold); font-weight:700; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px; }
+  .section-head h2{ font-size:clamp(24px,3.4vw,34px); font-weight:700; }
+  .section-head p{ color:var(--ink-dim); margin-top:14px; font-size:16px; line-height:1.6; }
+
+  .nudge-demo{ background:var(--card); border:1px solid var(--card-line); border-radius:var(--radius); padding:30px 32px; display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+  .nudge-demo .badge{ font-size:10px; font-weight:700; letter-spacing:0.06em; color:var(--gold); text-transform:uppercase; margin-bottom:8px; display:block; }
+  .nudge-demo .msg{ font-size:16px; font-weight:600; line-height:1.4; }
+  .nudge-demo .cta{ margin-left:auto; font-size:12.5px; font-weight:700; color:#fff; background:var(--violet); display:inline-block; padding:9px 16px; border-radius:999px; white-space:nowrap; }
+
+  .cmp-table{ width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--card-line); border-radius:var(--radius); overflow:hidden; }
+  .cmp-table th, .cmp-table td{ padding:16px 18px; text-align:left; font-size:14px; border-bottom:1px solid var(--card-line); }
+  .cmp-table th{ color:var(--ink-faint); font-weight:600; font-size:12.5px; text-transform:uppercase; letter-spacing:0.04em; }
+  .cmp-table td.hi, .cmp-table th.hi{ background:#8B6BFF14; color:var(--ink); font-weight:600; }
+  .cmp-table tr:last-child td{ border-bottom:none; }
+  .yes{ color:var(--mint); font-weight:700; }
+  .no{ color:var(--ink-faint); }
+  .cmp-wrap-scroll{ overflow-x:auto; }
+
+  .trust-band{ background:var(--card); border:1px solid var(--card-line); border-radius:var(--radius); padding:28px 32px; }
+  .trust-head{ font-size:12.5px; font-weight:700; color:var(--mint); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px; }
+  .trust-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px 22px; }
+  .trust-item{ display:flex; gap:10px; align-items:flex-start; font-size:13.5px; color:var(--ink-dim); line-height:1.5; }
+  .trust-item .check{ color:var(--mint); font-weight:700; margin-top:1px; }
+  @media (max-width:640px){ .trust-grid{ grid-template-columns:1fr; } }
+
+  #waitlist{ padding:60px 0 100px; }
+  .waitlist-card{ max-width:520px; margin:0 auto; text-align:center; background:var(--card); border:1px solid var(--card-line); border-radius:var(--radius); padding:44px 36px; }
+  .waitlist-card .section-eyebrow{ justify-content:center; display:flex; }
+  .waitlist-card h2{ font-size:26px; margin-bottom:10px; }
+  .waitlist-card p{ color:var(--ink-dim); font-size:14.5px; margin-bottom:26px; }
+  .hidden-field{ position:absolute; left:-9999px; }
+  .form-row{ display:flex; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
+  .form-row input{ flex:1; min-width:160px; background:#0D0C12; border:1px solid #ffffff20; border-radius:12px; padding:14px 16px; color:var(--ink); font-size:15px; font-family:'Inter'; }
+  .form-row input::placeholder{ color:var(--ink-faint); }
+  .form-row input:focus{ outline:2px solid var(--violet); outline-offset:2px; }
+  .form-success{ display:none; align-items:center; justify-content:center; gap:10px; color:var(--mint); font-weight:600; font-size:15px; margin-top:8px; }
+  .check-big{ width:26px; height:26px; border-radius:50%; background:#2EE6A822; display:flex; align-items:center; justify-content:center; font-size:14px; }
+  .waitlist-card.submitted form{ display:none; }
+  .waitlist-card.submitted .form-success{ display:flex; }
+
+  footer{ position:relative; z-index:1; padding:44px 0 40px; border-top:1px solid var(--card-line); }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; color:var(--ink-faint); font-size:13.5px; flex-wrap:wrap; gap:12px; max-width:1180px; }
+
+  @media (max-width:640px){
+    .wrap{ padding:0 18px; }
+    nav .wrap{ height:66px; }
+    .logo-mark{ width:26px; height:26px; }
+    .navlinks{ display:none; }
+    .hero{ padding:44px 0 10px; }
+    .hero-cta{ flex-direction:column; align-items:stretch; }
+    .hero-cta .btn{ justify-content:center; width:100%; }
+    .nudge-demo .cta{ margin-left:0; }
+    section{ padding:44px 0; }
+    .waitlist-card{ padding:34px 22px; }
+    .form-row{ flex-direction:column; }
+    footer .wrap{ flex-direction:column; text-align:center; }
+  }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="/" class="logo"><img src="/assets/logo-mark.png" alt="FilsOnly" class="logo-mark" /> FilsOnly <span class="nav-badge">BETA</span></a>
+    <div class="navlinks">
+      <a href="/#compare">Pricing</a>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+    <a href="#waitlist" class="btn btn-primary">Request access</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> Beta — already in testers' hands</div>
+    <h1>The AI email assistant for after <span class="accent">triage is done.</span></h1>
+    <p class="lede">Plenty of AI tools help you process your inbox faster. FilsOnly's job starts once that's done — remembering which threads you meant to follow up on, and nudging you before they go cold.</p>
+    <div class="hero-cta">
+      <a href="#waitlist" class="btn btn-primary">Request beta access</a>
+      <a href="/" class="btn btn-ghost">See how FilsOnly works</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="nudge-demo">
+      <div>
+        <span class="badge">FilsOnly nudge</span>
+        <div class="msg">ABC Corp is waiting on your reply. Draft one now?</div>
+      </div>
+      <span class="cta">Draft a reply now &rarr;</span>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">A different kind of AI assistant</div>
+      <h2>Most "AI email assistants" help you process email. Not follow up on it.</h2>
+      <p>Search "AI email assistant" and you'll mostly find tools built to triage, summarize, and draft — sorting the urgent from the unimportant, or writing a reply faster once you're looking at a message. That's a real problem, and Gmail and Outlook are already building it in for free. It's not the problem FilsOnly is built to solve.</p>
+      <p>FilsOnly's job starts after triage is done: watching the threads you already decided mattered, and remembering the ones you meant to get back to but didn't.</p>
+    </div>
+    <div class="cmp-wrap-scroll">
+      <table class="cmp-table">
+        <tr><th></th><th>Triage-style AI assistants</th><th class="hi">FilsOnly</th></tr>
+        <tr><td>Sorts urgent from unimportant</td><td class="yes">Yes</td><td class="hi yes">Yes</td></tr>
+        <tr><td>Drafts replies</td><td class="yes">Yes</td><td class="hi yes">Yes</td></tr>
+        <tr><td>Remembers a thread after you close it</td><td class="no">No</td><td class="hi yes">Yes</td></tr>
+        <tr><td>Tells you when a conversation has gone stale</td><td class="no">No</td><td class="hi yes">Yes</td></tr>
+        <tr><td>Runs on your own AI key, at cost</td><td class="no">Usually a flat subscription</td><td class="hi yes">Yes</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="wrap">
+    <div class="trust-band">
+      <div class="trust-head">Private by design</div>
+      <div class="trust-grid">
+        <div class="trust-item"><span class="check">✓</span> Email stays between your device and Gmail/Outlook</div>
+        <div class="trust-item"><span class="check">✓</span> No FilsOnly backend server holds your inbox</div>
+        <div class="trust-item"><span class="check">✓</span> Bring your own AI key — no markup, billed at cost</div>
+        <div class="trust-item"><span class="check">✓</span> Free during beta</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="waitlist">
+  <div class="wrap">
+    <div class="waitlist-card">
+      <div class="section-eyebrow">Beta access</div>
+      <h2>Get on the list</h2>
+      <p>We're onboarding a limited number of beta users. Drop your email and we'll reach out with access.</p>
+      <form name="beta-waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="waitlistForm">
+        <input type="hidden" name="form-name" value="beta-waitlist" />
+        <p class="hidden-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:16px;">Join the beta waitlist</button>
+      </form>
+      <div id="formSuccess" class="form-success">
+        <div class="check-big">✓</div>
+        <div>You're on the list — we'll be in touch soon.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 FilsOnly</div>
+    <div><a href="mailto:hello@filsonly.com">hello@filsonly.com</a> &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/">filsonly.com</a></div>
+  </div>
+</footer>
+
+
+<script>
+  const waitlistForm = document.getElementById('waitlistForm');
+  if (waitlistForm) {
+    waitlistForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(waitlistForm);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString(),
+      })
+        .then(() => { document.querySelector('.waitlist-card').classList.add('submitted'); })
+        .catch(() => { alert("Something went wrong — please try again or email hello@filsonly.com directly."); });
+    });
+  }
+</script>
+
+</body>
+</html>
