@@ -145,6 +145,16 @@
   @media (max-width:900px){ .trust-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:640px){ .trust-grid{ grid-template-columns:1fr; } .trust-band{ padding:24px 22px; } }
 
+  .who-section{ padding-top:0; }
+  .who-line{ font-size:clamp(22px,3vw,30px); font-weight:600; max-width:640px; margin-bottom:30px; }
+  .who-chips{ display:flex; flex-wrap:wrap; gap:12px; }
+  .who-chip{
+    background:var(--card); border:1px solid var(--card-line); border-radius:999px;
+    padding:10px 20px; font-size:14px; font-weight:600; color:var(--ink-dim);
+    transition:border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .who-chip:hover{ border-color:#8B6BFF66; color:var(--ink); transform:translateY(-1px); }
+
   .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; }
   .steps::before{
     content:""; position:absolute; top:44px; left:12%; right:12%; height:2px;
@@ -380,6 +390,24 @@
         <h3>Get nudged, not buried</h3>
         <p>When something's gone quiet, FilsOnly tells you — with a one-tap shortcut to draft the reply.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="who-section">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:26px;">
+      <div class="section-eyebrow">Who it's for</div>
+    </div>
+    <div class="who-line">For people whose work depends on getting back to people.</div>
+    <div class="who-chips">
+      <span class="who-chip">Founders</span>
+      <span class="who-chip">Consultants</span>
+      <span class="who-chip">Sales</span>
+      <span class="who-chip">Recruiting</span>
+      <span class="who-chip">Client Services</span>
+      <span class="who-chip">Freelancers</span>
+      <span class="who-chip">Executives</span>
     </div>
   </div>
 </section>
