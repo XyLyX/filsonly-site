@@ -134,6 +134,23 @@
   .check{ color:var(--mint); font-weight:700; flex-shrink:0; }
   .cross{ color:var(--coral); font-weight:700; flex-shrink:0; }
 
+  .cmp-wrap-scroll{ overflow-x:auto; }
+  .cmp-table{ width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--card-line); border-radius:var(--radius); overflow:hidden; min-width:600px; }
+  .cmp-table th, .cmp-table td{ padding:16px 20px; text-align:left; font-size:14px; border-bottom:1px solid var(--card-line); }
+  .cmp-table th{ color:var(--ink-faint); font-weight:600; font-size:12.5px; text-transform:uppercase; letter-spacing:0.04em; }
+  .cmp-table td.hi, .cmp-table th.hi{ background:#8B6BFF14; color:var(--ink); font-weight:600; }
+  .cmp-table tr:last-child td{ border-bottom:none; }
+  .cmp-yes{ color:var(--mint); font-weight:700; }
+  .cmp-no{ color:var(--ink-faint); }
+
+  .pricing-card{ background:var(--card); border:1px solid var(--card-line); border-radius:var(--radius); padding:36px 40px; max-width:520px; }
+  .pricing-tier{ font-size:12.5px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px; }
+  .pricing-amount{ font-family:'Space Grotesk'; font-size:40px; font-weight:700; margin-bottom:18px; }
+  .pricing-amount span{ font-size:15px; color:var(--ink-faint); font-weight:500; font-family:'Inter'; }
+  .pricing-list{ list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:20px; }
+  .pricing-list li{ font-size:14.5px; color:var(--ink-dim); display:flex; gap:10px; align-items:flex-start; }
+  .pricing-note{ font-size:13px; color:var(--ink-faint); border-top:1px solid var(--card-line); padding-top:16px; }
+
   .trust-strip{ padding:0 0 8px; }
   .trust-band{ background:var(--card); border:1px solid var(--card-line); border-radius:var(--radius); padding:30px 36px; }
   .trust-head{ font-size:12.5px; font-weight:700; color:var(--mint); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:18px; }
@@ -238,7 +255,7 @@
       <a href="#compare">Pricing</a>
       <a href="/privacy.html">Privacy</a>
     </div>
-    <a href="#waitlist" class="btn btn-primary">Request access</a>
+    <a href="#waitlist" class="btn btn-primary">Join the private beta</a>
   </div>
 </nav>
 
@@ -249,9 +266,10 @@
       <h1>It remembers what your <span class="accent">inbox forgets.</span></h1>
       <p class="lede">FilsOnly connects to Outlook or Gmail, quietly tracks the threads that matter, and nudges you before something falls through — days later, not in the moment you'd have noticed anyway.</p>
       <div class="hero-cta">
-        <a href="#waitlist" class="btn btn-primary">Request beta access</a>
+        <a href="#waitlist" class="btn btn-primary">Join the private beta</a>
         <a href="#memory" class="btn btn-ghost">See how it remembers</a>
       </div>
+      <div style="margin-top:14px; font-size:13px; color:var(--ink-faint);">Free during beta &middot; Gmail &amp; Outlook &middot; Bring your own AI key</div>
       <div class="provider-row">
         Works with
         <span class="provider-pill">
@@ -324,37 +342,51 @@
       <h2>Triage is easy. Memory is the hard part.</h2>
       <p>Your inbox app already sorts urgent from unimportant. What it doesn't do is remember that you never actually replied — until you're the one who has to notice.</p>
     </div>
-    <div class="compare">
-      <div class="card">
-        <div class="label">Native inbox AI</div>
-        <div class="price">$20–30<span class="mono" style="font-size:14px; color:var(--ink-faint);">/mo</span></div>
-        <div class="sub">Gmail Gemini, Outlook Copilot</div>
-        <ul>
-          <li><span class="check">✓</span> Drafts replies, summarizes threads</li>
-          <li><span class="cross">✕</span> Forgets a thread the moment you close it</li>
-          <li><span class="cross">✕</span> Bundled into a paid Workspace/365 tier</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="label">Triage-only apps</div>
-        <div class="price">$20–50<span class="mono" style="font-size:14px; color:var(--ink-faint);">/mo</span></div>
-        <div class="sub">Lindy, alfred_, Motion</div>
-        <ul>
-          <li><span class="check">✓</span> Sorts and labels your inbox</li>
-          <li><span class="cross">✕</span> No sense of what's gone quiet</li>
-          <li><span class="cross">✕</span> Priced for executives, not you</li>
-        </ul>
-      </div>
-      <div class="card hi">
-        <div class="label">FilsOnly</div>
-        <div class="price">~2 <span class="mono" style="font-size:14px; color:var(--ink-faint);">fils/day</span></div>
-        <div class="sub">Free in beta · your own AI key, billed at cost</div>
-        <ul>
-          <li><span class="check">✓</span> Tracks threads and nudges before they go stale</li>
-          <li><span class="check">✓</span> One tap from nudge to drafted reply</li>
-          <li><span class="check">✓</span> Your data stays on your device</li>
-        </ul>
-      </div>
+    <div class="cmp-wrap-scroll">
+      <table class="cmp-table">
+        <tr>
+          <th></th>
+          <th>Native inbox AI<br><span style="font-weight:400; text-transform:none; font-size:12px;">Gmail Gemini, Outlook Copilot</span></th>
+          <th>Triage-only apps<br><span style="font-weight:400; text-transform:none; font-size:12px;">Lindy, alfred_, Motion</span></th>
+          <th class="hi">FilsOnly</th>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td>$20–30/mo</td>
+          <td>$20–50/mo</td>
+          <td class="hi">~2 fils/day · free in beta</td>
+        </tr>
+        <tr>
+          <td>Drafts replies</td>
+          <td class="cmp-yes">✓</td>
+          <td class="cmp-no">Limited</td>
+          <td class="hi cmp-yes">✓</td>
+        </tr>
+        <tr>
+          <td>Sorts &amp; summarizes your inbox</td>
+          <td class="cmp-yes">✓</td>
+          <td class="cmp-yes">✓</td>
+          <td class="hi cmp-no">Not the focus</td>
+        </tr>
+        <tr>
+          <td>Notices when a thread's gone quiet</td>
+          <td class="cmp-no">Limited</td>
+          <td class="cmp-no">Limited</td>
+          <td class="hi cmp-yes">✓</td>
+        </tr>
+        <tr>
+          <td>Runs on your own AI key, at cost</td>
+          <td class="cmp-no">—</td>
+          <td class="cmp-no">—</td>
+          <td class="hi cmp-yes">✓</td>
+        </tr>
+        <tr>
+          <td>Stores your data locally</td>
+          <td class="cmp-no">—</td>
+          <td class="cmp-no">—</td>
+          <td class="hi cmp-yes">✓</td>
+        </tr>
+      </table>
     </div>
   </div>
 </section>
@@ -412,18 +444,38 @@
   </div>
 </section>
 
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Pricing</div>
+      <h2>Free during beta.</h2>
+      <p>No FilsOnly subscription right now — just your own AI usage, billed directly by your provider.</p>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-tier">Private beta</div>
+      <div class="pricing-amount">Free<span> &middot; FilsOnly charges nothing</span></div>
+      <ul class="pricing-list">
+        <li><span class="check">✓</span> Limited beta access, Gmail or Outlook</li>
+        <li><span class="check">✓</span> Bring your own OpenAI or Anthropic API key</li>
+        <li><span class="check">✓</span> Your AI usage is billed directly by your AI provider — typically ≈0.8 fils/day, no markup</li>
+      </ul>
+      <div class="pricing-note">Beta users will be notified before any paid FilsOnly plan launches.</div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="ticker-band">
       <div style="display:flex; align-items:center; gap:16px;">
         <div class="coin">฿</div>
         <div>
-          <div class="ticker-text">Typical daily cost</div>
+          <div class="ticker-text">Typical daily AI cost</div>
           <div class="ticker-num" id="tickerNum">0.8 fils / day</div>
-          <div class="ticker-text" style="margin-top:4px;">FilsOnly is free during beta — that's your AI provider's usage, billed directly to you.</div>
+          <div class="ticker-text" style="margin-top:4px;">Billed directly by your AI provider — FilsOnly itself is free during beta.</div>
         </div>
       </div>
-      <a href="#waitlist" class="btn btn-primary">Request beta access</a>
+      <a href="#waitlist" class="btn btn-primary">Join the private beta</a>
     </div>
   </div>
 </section>
