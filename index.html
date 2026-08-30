@@ -16,6 +16,54 @@
 <link rel="canonical" href="https://filsonly.com/">
 <link rel="icon" type="image/png" href="/assets/logo-mark.png">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "FilsOnly",
+  "url": "https://filsonly.com/",
+  "logo": "https://filsonly.com/assets/logo-mark.png",
+  "email": "hello@filsonly.com"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "FilsOnly",
+  "description": "FilsOnly watches your Gmail or Outlook inbox for conversations that have gone quiet and nudges you before a follow-up falls through.",
+  "url": "https://filsonly.com/",
+  "applicationCategory": "BusinessApplication"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What email providers does FilsOnly support?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Gmail and Outlook. You connect one of the two (not both at once) in the current beta." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does FilsOnly store my email on its servers?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. FilsOnly doesn't operate a backend that stores your inbox -- data stays on your device, with one narrow exception: a stateless embedding function for memory and search that stores nothing." }
+    },
+    {
+      "@type": "Question",
+      "name": "What does FilsOnly cost during beta?",
+      "acceptedAnswer": { "@type": "Answer", "text": "FilsOnly itself is free during beta. You bring your own OpenAI or Anthropic API key, and your AI usage is billed directly by your provider -- typically around 0.8 fils per day." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does FilsOnly remember a thread?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Threads are tracked automatically for 7 days, since most follow-ups happen within a week. Tag a thread to keep it remembered indefinitely." }
+    }
+  ]
+}
+</script>
 <style>
   :root{
     --bg:#0D0C12;
@@ -159,8 +207,24 @@
   .trust-item .check{ margin-top:1px; }
   .trust-more{ margin-top:18px; padding-top:18px; border-top:1px solid var(--card-line); font-size:13px; color:var(--ink-faint); }
   .trust-more a{ color:var(--gold); font-weight:600; }
+  .faq-list{ display:flex; flex-direction:column; gap:14px; max-width:720px; }
+  .faq-item{ background:var(--card); border:1px solid var(--card-line); border-radius:14px; padding:20px 24px; }
+  .faq-item .q{ font-weight:600; font-size:15px; margin-bottom:8px; }
+  .faq-item .a{ color:var(--ink-dim); font-size:14px; line-height:1.6; }
   @media (max-width:900px){ .trust-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:640px){ .trust-grid{ grid-template-columns:1fr; } .trust-band{ padding:24px 22px; } }
+
+  .arch{ padding-top:0; }
+  .arch-diagram{ display:flex; align-items:center; justify-content:center; gap:0; flex-wrap:wrap; padding:36px 20px; background:var(--card); border:1px solid var(--card-line); border-radius:var(--radius); }
+  .arch-node{ background:#0D0C12; border:1px solid var(--card-line); border-radius:14px; padding:18px 22px; text-align:center; min-width:150px; }
+  .arch-node .t{ font-weight:700; font-size:14.5px; }
+  .arch-node .s{ font-size:11.5px; color:var(--ink-faint); margin-top:4px; }
+  .arch-node.mid{ border-color:#8B6BFF66; background:linear-gradient(160deg, #8B6BFF26, #0D0C12); }
+  .arch-link{ display:flex; flex-direction:column; align-items:center; gap:4px; padding:0 18px; min-width:120px; }
+  .arch-link .arr{ font-family:'JetBrains Mono'; color:var(--ink-faint); font-size:18px; }
+  .arch-link .lbl{ font-size:10.5px; color:var(--ink-faint); text-align:center; text-transform:uppercase; letter-spacing:0.04em; }
+  .arch-caption{ text-align:center; max-width:520px; margin:22px auto 0; color:var(--ink-dim); font-size:14px; line-height:1.6; }
+  @media (max-width:760px){ .arch-diagram{ flex-direction:column; } .arch-link{ flex-direction:row; padding:10px 0; } .arch-link .arr{ transform:rotate(90deg); } }
 
   .who-section{ padding-top:0; }
   .who-line{ font-size:clamp(22px,3vw,30px); font-weight:600; max-width:640px; margin-bottom:30px; }
@@ -325,13 +389,33 @@
     <div class="trust-band">
       <div class="trust-head">Private by design</div>
       <div class="trust-grid">
-        <div class="trust-item"><span class="check">✓</span> Email stays between your device and Gmail/Outlook</div>
-        <div class="trust-item"><span class="check">✓</span> No FilsOnly backend server holds your inbox</div>
+        <div class="trust-item"><span class="check">✓</span> Your inbox isn't stored on FilsOnly servers</div>
+        <div class="trust-item"><span class="check">✓</span> Sign-in is direct OAuth — we never see your password</div>
         <div class="trust-item"><span class="check">✓</span> Bring your own AI key — no markup, billed at cost</div>
         <div class="trust-item"><span class="check">✓</span> Delete the app and your local data goes with it</div>
       </div>
-      <div class="trust-more">Full details, including how the memory/search feature works, in the <a href="/privacy.html">privacy policy</a>.</div>
+      <div class="trust-more">One narrow exception: memory/search uses a stateless embedding service that sees only the text needed to generate a numerical representation — it stores nothing. Full details in the <a href="/privacy.html">privacy policy</a>.</div>
     </div>
+  </div>
+</section>
+
+<section class="arch">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">How the pieces connect</div>
+      <h2>No central copy of your inbox.</h2>
+    </div>
+    <div class="arch-diagram">
+      <div class="arch-node"><div class="t">Your device</div><div class="s">FilsOnly runs here</div></div>
+      <div class="arch-link"><span class="arr">&harr;</span><span class="lbl">Direct OAuth</span></div>
+      <div class="arch-node mid"><div class="t">Gmail / Outlook</div><div class="s">Your inbox &amp; calendar</div></div>
+    </div>
+    <div class="arch-diagram" style="margin-top:14px;">
+      <div class="arch-node"><div class="t">Your device</div><div class="s">FilsOnly runs here</div></div>
+      <div class="arch-link"><span class="arr">&rarr;</span><span class="lbl">Your API key</span></div>
+      <div class="arch-node mid"><div class="t">Your AI provider</div><div class="s">Anthropic or OpenAI</div></div>
+    </div>
+    <p class="arch-caption">FilsOnly coordinates the process without maintaining a central copy of your inbox — each connection runs directly between your device and the service on the other end, using your own sign-in and your own API key.</p>
   </div>
 </section>
 
@@ -351,10 +435,10 @@
           <th class="hi">FilsOnly</th>
         </tr>
         <tr>
-          <td>Price</td>
-          <td>$20–30/mo</td>
-          <td>$20–50/mo</td>
-          <td class="hi">~0.8 fils/day · free in beta</td>
+          <td>Pricing model</td>
+          <td>Subscription</td>
+          <td>Subscription</td>
+          <td class="hi">BYO AI — no FilsOnly subscription during beta</td>
         </tr>
         <tr>
           <td>Drafts replies</td>
@@ -381,7 +465,7 @@
           <td class="hi cmp-yes">✓</td>
         </tr>
         <tr>
-          <td>Stores your data locally</td>
+          <td>Local-first data storage</td>
           <td class="cmp-no">—</td>
           <td class="cmp-no">—</td>
           <td class="hi cmp-yes">✓</td>
@@ -402,7 +486,7 @@
         <div class="icon-badge">🔗</div>
         <span class="num">STEP 01</span>
         <h3>Connect your inbox</h3>
-        <p>Outlook or Gmail, your choice. Sign in once — your email stays between your device and your provider.</p>
+        <p>Outlook or Gmail, your choice. Sign in once — FilsOnly doesn't operate a backend that stores your inbox.</p>
       </div>
       <div class="step">
         <div class="icon-badge">🔑</div>
@@ -480,11 +564,38 @@
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Questions</div>
+      <h2>Before you join.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="q">What email providers does FilsOnly support?</div>
+        <div class="a">Gmail and Outlook. You connect one of the two (not both at once) in the current beta.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Does FilsOnly store my email on its servers?</div>
+        <div class="a">No. FilsOnly doesn't operate a backend that stores your inbox — data stays on your device, with one narrow exception: a stateless embedding function for memory and search that stores nothing. Full details in the <a href="/privacy.html" style="color:var(--gold); font-weight:600;">privacy policy</a>.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">What does FilsOnly cost during beta?</div>
+        <div class="a">FilsOnly itself is free during beta. You bring your own OpenAI or Anthropic API key, and your AI usage is billed directly by your provider — typically around 0.8 fils per day.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">How long does FilsOnly remember a thread?</div>
+        <div class="a">Threads are tracked automatically for 7 days, since most follow-ups happen within a week. Tag a thread to keep it remembered indefinitely.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="waitlist">
   <div class="wrap">
     <div class="waitlist-card">
       <div class="section-eyebrow">Beta access</div>
-      <h2>Get on the list</h2>
+      <h2>Join the private beta</h2>
       <p>We're onboarding a limited number of beta users. Drop your email and we'll reach out with access.</p>
 
       <form name="beta-waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="waitlistForm">
@@ -494,7 +605,7 @@
           <input type="text" name="name" placeholder="Your name" required />
           <input type="email" name="email" placeholder="you@example.com" required />
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:16px;">Join the beta waitlist</button>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:16px;">Request beta access</button>
       </form>
 
       <div id="formSuccess" class="form-success">
@@ -506,14 +617,36 @@
 </section>
 
 <footer>
-  <div class="wrap" style="flex-direction:column; align-items:flex-start; gap:20px;">
-    <div style="display:flex; gap:18px; flex-wrap:wrap; font-size:13px;">
-      <a href="/gmail-follow-up-reminder">Gmail follow-up reminder</a>
-      <a href="/outlook-follow-up-reminder">Outlook follow-up reminder</a>
-      <a href="/ai-email-follow-up-assistant">AI email follow-up assistant</a>
-      <a href="/forgot-to-reply-to-email">Forgot to reply to an email?</a>
+  <div class="wrap" style="flex-direction:column; align-items:flex-start; gap:22px;">
+    <div style="display:flex; gap:40px; flex-wrap:wrap; font-size:13px;">
+      <div>
+        <div style="color:var(--ink-faint); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px;">By inbox</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="/email-follow-up-reminder">Email follow-up reminder</a>
+          <a href="/gmail-follow-up-reminder">Gmail follow-up reminder</a>
+          <a href="/outlook-follow-up-reminder">Outlook follow-up reminder</a>
+        </div>
+      </div>
+      <div>
+        <div style="color:var(--ink-faint); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px;">By use case</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="/ai-email-follow-up-assistant">AI email follow-up assistant</a>
+          <a href="/email-follow-up-automation">Email follow-up automation</a>
+          <a href="/track-unanswered-emails">Track unanswered emails</a>
+          <a href="/forgot-to-reply-to-email">Forgot to reply to an email?</a>
+        </div>
+      </div>
+      <div>
+        <div style="color:var(--ink-faint); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px;">By role</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="/for-sales">For sales</a>
+          <a href="/for-consultants">For consultants</a>
+          <a href="/for-founders">For founders</a>
+          <a href="/for-recruiters">For recruiters</a>
+        </div>
+      </div>
     </div>
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; width:100%;">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; width:100%; padding-top:18px; border-top:1px solid var(--card-line);">
       <div>© 2026 FilsOnly</div>
       <div><a href="mailto:hello@filsonly.com">hello@filsonly.com</a> · <a href="/privacy.html">Privacy</a> · filsonly.com</div>
     </div>
