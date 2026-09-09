@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beta Feedback — FilsOnly</title>
+<meta name="description" content="Tell us how the FilsOnly beta is going — installation, inbox sync, features, and overall impressions.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/assets/logo-mark.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0F1A;
+    --surface:#151B2C;
+    --surface-raised:#1E2740;
+    --border:#2A3350;
+    --border-strong:#3A4568;
+    --text-primary:#F5F6FA;
+    --text-secondary:#AEB4D6;
+    --text-tertiary:#8890B0;
+    --placeholder:#5B6288;
+    --gradient-start:#7C3AED;
+    --gradient-end:#2563EB;
+    --status-closed:#34D399;
+    --danger:#F87171;
+    --radius:20px;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{ font-family:'Space Grotesk', sans-serif; letter-spacing:-0.02em; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 28px; }
+  .form-wrap{ max-width:700px; margin:0 auto; padding:0 28px; }
+  @media (prefers-reduced-motion: reduce){ *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; } }
+
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(circle at 12% 8%, #7C3AED26, transparent 42%),
+      radial-gradient(circle at 88% 15%, #2563EB1c, transparent 38%);
+    pointer-events:none; z-index:0;
+  }
+
+  nav{ position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:#0B0F1A99; border-bottom:1px solid var(--border); }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:76px; }
+  .logo{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:19px; }
+  .logo-mark{ width:32px; height:32px; object-fit:contain; filter:drop-shadow(0 4px 14px #7C3AED55); }
+  .nav-badge{ font-family:'JetBrains Mono'; font-size:10.5px; font-weight:700; background:var(--gradient-start); color:#fff; padding:3px 8px; border-radius:6px; margin-left:6px; }
+  .btn{ padding:11px 20px; border-radius:999px; font-weight:600; font-size:14px; display:inline-flex; align-items:center; gap:8px; cursor:pointer; border:none; }
+  .btn-ghost{ background:#ffffff10; color:var(--text-primary); border:1px solid #ffffff20; }
+  .btn-primary{ background:linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); color:#fff; box-shadow:0 6px 24px #7C3AED4d; }
+  .btn-primary:disabled{ opacity:0.6; cursor:not-allowed; }
+
+  .hero{ position:relative; z-index:1; padding:64px 0 12px; text-align:center; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:#7C3AED22; border:1px solid #7C3AED44; color:#C4B5FF; font-size:13px; font-weight:600; padding:7px 14px; border-radius:999px; margin-bottom:22px; }
+  .dot{ width:6px; height:6px; border-radius:50%; background:var(--status-closed); }
+  .hero h1{ font-size:clamp(30px, 5vw, 42px); line-height:1.1; font-weight:700; }
+  .hero p.lede{ font-size:16px; color:var(--text-secondary); max-width:560px; margin:18px auto 0; line-height:1.65; }
+
+  main{ position:relative; z-index:1; padding:40px 0 100px; }
+
+  .card{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:32px; margin-bottom:20px; }
+  .card-top{ display:flex; align-items:center; gap:12px; margin-bottom:6px; }
+  .section-num{ font-family:'JetBrains Mono'; font-weight:700; font-size:12px; color:#C4B5FF; background:#7C3AED22; border:1px solid #7C3AED44; padding:3px 9px; border-radius:6px; flex-shrink:0; }
+  .card h2{ font-size:20px; font-weight:600; }
+  .card-sub{ color:var(--text-tertiary); font-size:13.5px; margin:6px 0 26px; }
+
+  .id-row{ display:flex; gap:12px; flex-wrap:wrap; }
+  .id-row .field{ flex:1; min-width:200px; }
+
+  label.field-label{ display:block; font-size:13px; font-weight:600; color:var(--text-secondary); margin-bottom:8px; }
+  input[type="text"], input[type="email"], textarea{
+    width:100%; background:var(--bg); border:1px solid var(--border); border-radius:12px;
+    padding:13px 15px; color:var(--text-primary); font-size:14.5px; font-family:'Inter';
+  }
+  input[type="text"]::placeholder, input[type="email"]::placeholder, textarea::placeholder{ color:var(--placeholder); }
+  input[type="text"]:focus, input[type="email"]:focus, textarea:focus{ outline:2px solid var(--gradient-start); outline-offset:1px; }
+  textarea{ resize:vertical; min-height:88px; line-height:1.5; }
+
+  fieldset{ border:none; margin:0 0 26px; padding:0; }
+  fieldset:last-of-type{ margin-bottom:0; }
+  legend{ font-size:14.5px; font-weight:600; color:var(--text-primary); margin-bottom:12px; padding:0; line-height:1.4; }
+  .q-hint{ font-weight:400; color:var(--text-tertiary); font-size:12.5px; display:block; margin-top:3px; }
+
+  .options{ display:flex; flex-wrap:wrap; gap:10px; }
+  .option{
+    position:relative; display:inline-flex; align-items:center; gap:10px;
+    padding:11px 16px; border-radius:12px; border:1px solid var(--border);
+    background:var(--surface-raised); cursor:pointer; font-size:13.5px; color:var(--text-secondary);
+    transition:border-color .15s ease, background .15s ease, color .15s ease;
+  }
+  .option:hover{ border-color:var(--border-strong); }
+  .option input{ position:absolute; opacity:0; width:1px; height:1px; }
+  .option-dot{ width:15px; height:15px; border-radius:50%; border:2px solid var(--border-strong); flex-shrink:0; position:relative; transition:border-color .15s ease; }
+  .option-dot::after{ content:""; position:absolute; inset:2.5px; border-radius:50%; background:linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); opacity:0; transition:opacity .15s ease; }
+  .option.is-checked{ border-color:var(--gradient-start); background:#7C3AED1c; color:var(--text-primary); }
+  .option.is-checked .option-dot{ border-color:var(--gradient-start); }
+  .option.is-checked .option-dot::after{ opacity:1; }
+
+  .section-feedback-label{ display:block; font-size:13.5px; font-weight:600; color:var(--text-secondary); margin-top:6px; margin-bottom:10px; }
+
+  .hidden-field{ position:absolute; left:-9999px; }
+
+  .submit-row{ text-align:center; margin-top:8px; }
+  .submit-row .btn{ padding:16px 40px; font-size:15px; width:100%; justify-content:center; }
+  .submit-note{ font-size:12.5px; color:var(--text-tertiary); margin-top:14px; }
+
+  #feedbackForm.is-hidden{ display:none; }
+  .success-card{ display:none; text-align:center; padding:56px 42px; }
+  .success-card.is-visible{ display:block; }
+  .check-big{ width:48px; height:48px; border-radius:50%; background:#34D39922; color:var(--status-closed); display:flex; align-items:center; justify-content:center; font-size:22px; margin:0 auto 18px; }
+  .success-card h2{ font-size:22px; margin-bottom:10px; }
+  .success-card p{ color:var(--text-secondary); font-size:14.5px; line-height:1.6; }
+
+  footer{ position:relative; z-index:1; padding:32px 0 40px; border-top:1px solid var(--border); }
+  footer .wrap{ text-align:center; color:var(--text-tertiary); font-size:13px; }
+  footer a{ color:var(--text-secondary); }
+
+  @media (max-width:640px){
+    .form-wrap{ padding:0 18px; }
+    nav .wrap{ height:64px; padding:0 18px; }
+    .logo-mark{ width:26px; height:26px; }
+    .hero{ padding:40px 0 8px; }
+    .card{ padding:24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="/" class="logo"><img src="/assets/logo-mark.png" alt="FilsOnly" class="logo-mark"> FilsOnly <span class="nav-badge">BETA</span></a>
+    <a href="/" class="btn btn-ghost">← Back to site</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="form-wrap">
+    <div class="eyebrow"><span class="dot"></span> Beta tester feedback</div>
+    <h1>Tell us how it's going.</h1>
+    <p class="lede">Four short sections, about five minutes. Answer what applies — skip anything you haven't tried. Name and email are optional if you'd rather stay anonymous.</p>
+  </div>
+</header>
+
+<main>
+  <div class="form-wrap">
+
+    <form id="feedbackForm" name="beta-feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="beta-feedback" />
+      <p class="hidden-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+      <div class="card">
+        <div class="id-row">
+          <div class="field">
+            <label class="field-label" for="tester-name">Name <span style="font-weight:400;color:var(--text-tertiary);">(optional)</span></label>
+            <input type="text" id="tester-name" name="name" placeholder="Your name">
+          </div>
+          <div class="field">
+            <label class="field-label" for="tester-email">Email <span style="font-weight:400;color:var(--text-tertiary);">(optional)</span></label>
+            <input type="email" id="tester-email" name="email" placeholder="you@example.com">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="section-num">01</span><h2>Download &amp; Installation</h2></div>
+        <p class="card-sub">Getting the app onto your phone and open for the first time.</p>
+
+        <fieldset>
+          <legend>Did you install FilsOnly via the Play Store link without any issues?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="install-experience" value="Yes, no problems"><span class="option-dot"></span><span>Yes, no problems</span></label>
+            <label class="option"><input type="radio" name="install-experience" value="Yes, but something felt off"><span class="option-dot"></span><span>Yes, but something felt off</span></label>
+            <label class="option"><input type="radio" name="install-experience" value="No, I got stuck"><span class="option-dot"></span><span>No, I got stuck</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Was anything about the Play Store listing confusing or different from what you expected?</legend>
+          <input type="text" name="playstore-listing-feedback" placeholder="Optional — a sentence or two">
+        </fieldset>
+
+        <fieldset>
+          <legend>Did the app open and load correctly on first launch?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="first-launch" value="Yes"><span class="option-dot"></span><span>Yes</span></label>
+            <label class="option"><input type="radio" name="first-launch" value="No"><span class="option-dot"></span><span>No</span></label>
+            <label class="option"><input type="radio" name="first-launch" value="Partially"><span class="option-dot"></span><span>Partially</span></label>
+          </div>
+        </fieldset>
+
+        <label class="section-feedback-label" for="section-1-feedback">Anything else about download &amp; installation?</label>
+        <textarea id="section-1-feedback" name="section-1-feedback" placeholder="Optional feedback or suggestions for this section"></textarea>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="section-num">02</span><h2>Email Setup &amp; Inbox Sync</h2></div>
+        <p class="card-sub">Connecting Gmail or Outlook and how your inbox showed up.</p>
+
+        <fieldset>
+          <legend>Did connecting Gmail/Outlook work smoothly?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="email-connect" value="Yes, straightforward"><span class="option-dot"></span><span>Yes, straightforward</span></label>
+            <label class="option"><input type="radio" name="email-connect" value="Yes, but took a few tries"><span class="option-dot"></span><span>Yes, but took a few tries</span></label>
+            <label class="option"><input type="radio" name="email-connect" value="No, couldn't connect"><span class="option-dot"></span><span>No, couldn't connect</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Once connected, did your inbox show correctly?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="inbox-sync" value="Yes"><span class="option-dot"></span><span>Yes</span></label>
+            <label class="option"><input type="radio" name="inbox-sync" value="Mostly, something seemed off"><span class="option-dot"></span><span>Mostly, something seemed off</span></label>
+            <label class="option"><input type="radio" name="inbox-sync" value="No, clearly wrong"><span class="option-dot"></span><span>No, clearly wrong</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Did Open/Closed tabs behave as expected?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="tabs-behavior" value="Yes"><span class="option-dot"></span><span>Yes</span></label>
+            <label class="option"><input type="radio" name="tabs-behavior" value="No"><span class="option-dot"></span><span>No</span></label>
+            <label class="option"><input type="radio" name="tabs-behavior" value="Didn't try"><span class="option-dot"></span><span>Didn't try</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Did only Primary/Focused emails show, without Promotions/Social/Updates clutter?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="primary-filtering" value="Yes"><span class="option-dot"></span><span>Yes</span></label>
+            <label class="option"><input type="radio" name="primary-filtering" value="No"><span class="option-dot"></span><span>No</span></label>
+            <label class="option"><input type="radio" name="primary-filtering" value="Not sure"><span class="option-dot"></span><span>Not sure</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Did tapping an email open it correctly?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="tap-open-email" value="Yes"><span class="option-dot"></span><span>Yes</span></label>
+            <label class="option"><input type="radio" name="tap-open-email" value="No"><span class="option-dot"></span><span>No</span></label>
+            <label class="option"><input type="radio" name="tap-open-email" value="Didn't try"><span class="option-dot"></span><span>Didn't try</span></label>
+          </div>
+        </fieldset>
+
+        <label class="section-feedback-label" for="section-2-feedback">Anything else about email setup &amp; inbox sync?</label>
+        <textarea id="section-2-feedback" name="section-2-feedback" placeholder="Optional feedback or suggestions for this section"></textarea>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="section-num">03</span><h2>Features &amp; Functionality</h2></div>
+        <p class="card-sub">Draft replies, tracking, notifications, and general stability.</p>
+
+        <fieldset>
+          <legend>Did draft replies feel accurate/relevant?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="draft-replies" value="Yes"><span class="option-dot"></span><span>Yes</span></label>
+            <label class="option"><input type="radio" name="draft-replies" value="Somewhat"><span class="option-dot"></span><span>Somewhat</span></label>
+            <label class="option"><input type="radio" name="draft-replies" value="No"><span class="option-dot"></span><span>No</span></label>
+            <label class="option"><input type="radio" name="draft-replies" value="Didn't try"><span class="option-dot"></span><span>Didn't try</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Did the Track feature work as expected (tag, find, untrack)?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="track-feature" value="Yes"><span class="option-dot"></span><span>Yes</span></label>
+            <label class="option"><input type="radio" name="track-feature" value="Partially"><span class="option-dot"></span><span>Partially</span></label>
+            <label class="option"><input type="radio" name="track-feature" value="No"><span class="option-dot"></span><span>No</span></label>
+            <label class="option"><input type="radio" name="track-feature" value="Didn't try"><span class="option-dot"></span><span>Didn't try</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Did local delete work as expected?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="local-delete" value="Yes"><span class="option-dot"></span><span>Yes</span></label>
+            <label class="option"><input type="radio" name="local-delete" value="No"><span class="option-dot"></span><span>No</span></label>
+            <label class="option"><input type="radio" name="local-delete" value="Didn't try"><span class="option-dot"></span><span>Didn't try</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Did you get notified about anything waiting for a reply?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="reply-notification" value="Yes, accurate"><span class="option-dot"></span><span>Yes, accurate</span></label>
+            <label class="option"><input type="radio" name="reply-notification" value="Yes, but felt off"><span class="option-dot"></span><span>Yes, but felt off</span></label>
+            <label class="option"><input type="radio" name="reply-notification" value="No, never got one"><span class="option-dot"></span><span>No, never got one</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>With the app closed, did you still get notified about anything urgent?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="background-notification" value="Yes"><span class="option-dot"></span><span>Yes</span></label>
+            <label class="option"><input type="radio" name="background-notification" value="No"><span class="option-dot"></span><span>No</span></label>
+            <label class="option"><input type="radio" name="background-notification" value="Not sure"><span class="option-dot"></span><span>Not sure</span></label>
+            <label class="option"><input type="radio" name="background-notification" value="Didn't test"><span class="option-dot"></span><span>Didn't test</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Did anything crash, freeze, or behave unexpectedly?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="crash-freeze" value="Yes"><span class="option-dot"></span><span>Yes</span></label>
+            <label class="option"><input type="radio" name="crash-freeze" value="No"><span class="option-dot"></span><span>No</span></label>
+          </div>
+        </fieldset>
+
+        <label class="section-feedback-label" for="section-3-feedback">Anything else about features &amp; functionality?</label>
+        <textarea id="section-3-feedback" name="section-3-feedback" placeholder="Optional feedback or suggestions for this section"></textarea>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="section-num">04</span><h2>Overall Feedback</h2></div>
+        <p class="card-sub">The big picture — how it compares, and what's next.</p>
+
+        <fieldset>
+          <legend>In one sentence, how would you describe this app to a friend?</legend>
+          <input type="text" name="describe-app" placeholder="Optional — one sentence">
+        </fieldset>
+
+        <fieldset>
+          <legend>Does this feel meaningfully different from your normal Gmail/Outlook app?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="meaningfully-different" value="Yes, clearly"><span class="option-dot"></span><span>Yes, clearly</span></label>
+            <label class="option"><input type="radio" name="meaningfully-different" value="Somewhat"><span class="option-dot"></span><span>Somewhat</span></label>
+            <label class="option"><input type="radio" name="meaningfully-different" value="Not really"><span class="option-dot"></span><span>Not really</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Would you keep using this after the beta?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="keep-using" value="Yes"><span class="option-dot"></span><span>Yes</span></label>
+            <label class="option"><input type="radio" name="keep-using" value="Maybe"><span class="option-dot"></span><span>Maybe</span></label>
+            <label class="option"><input type="radio" name="keep-using" value="No"><span class="option-dot"></span><span>No</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Anything that made you not trust the app?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="trust-issue" value="No, felt fine"><span class="option-dot"></span><span>No, felt fine</span></label>
+            <label class="option"><input type="radio" name="trust-issue" value="Yes, something felt off"><span class="option-dot"></span><span>Yes, something felt off</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>What's the one thing you'd want fixed or added next?</legend>
+          <input type="text" name="fix-next" placeholder="Optional">
+        </fieldset>
+
+        <label class="section-feedback-label" for="section-4-feedback">Anything else, overall?</label>
+        <textarea id="section-4-feedback" name="section-4-feedback" placeholder="Optional feedback or suggestions for this section"></textarea>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="btn btn-primary">Send feedback</button>
+        <p class="submit-note">Goes straight to the FilsOnly team — thank you for testing.</p>
+      </div>
+    </form>
+
+    <div id="successCard" class="card success-card">
+      <div class="check-big">✓</div>
+      <h2>Thanks for the feedback.</h2>
+      <p>It's been sent straight to the team — this genuinely helps us fix the right things before launch.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap"><a href="/">← Back to filsonly.com</a> · <a href="mailto:hello@filsonly.com">hello@filsonly.com</a></div>
+</footer>
+
+<script>
+  document.querySelectorAll('.option input[type="radio"]').forEach((input) => {
+    input.addEventListener('change', () => {
+      document.querySelectorAll('input[name="' + input.name + '"]').forEach((sibling) => {
+        sibling.closest('.option').classList.toggle('is-checked', sibling.checked);
+      });
+    });
+  });
+
+  const feedbackForm = document.getElementById('feedbackForm');
+  const successCard = document.getElementById('successCard');
+  if (feedbackForm) {
+    feedbackForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const submitBtn = feedbackForm.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      const data = new FormData(feedbackForm);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString(),
+      })
+        .then(() => {
+          feedbackForm.classList.add('is-hidden');
+          successCard.classList.add('is-visible');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        })
+        .catch(() => {
+          submitBtn.disabled = false;
+          alert('Something went wrong — please try again or email hello@filsonly.com directly.');
+        });
+    });
+  }
+</script>
+
+</body>
+</html>
