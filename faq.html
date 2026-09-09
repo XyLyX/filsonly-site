@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ &amp; Help — FilsOnly</title>
+<meta name="description" content="How to connect Gmail or Outlook, add your AI key, and get the most out of FilsOnly — plus answers to common beta questions.">
+<meta property="og:title" content="FAQ &amp; Help — FilsOnly">
+<meta property="og:description" content="How to connect Gmail or Outlook, add your AI key, and get the most out of FilsOnly — plus answers to common beta questions.">
+<meta property="og:url" content="https://filsonly.com/faq.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://filsonly.com/assets/logo-mark.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FAQ &amp; Help — FilsOnly">
+<meta name="twitter:description" content="How to connect Gmail or Outlook, add your AI key, and get the most out of FilsOnly — plus answers to common beta questions.">
+<link rel="canonical" href="https://filsonly.com/faq.html">
+<link rel="icon" type="image/png" href="/assets/logo-mark.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D0C12; --card:#18151F; --card-line:#ffffff14;
+    --violet:#8B6BFF; --violet-soft:#8B6BFF22; --gold:#FFC940; --coral:#FF5D6C; --mint:#2EE6A8;
+    --ink:#F4F1FB; --ink-dim:#B8B2CC; --ink-faint:#726C8C; --radius:20px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--bg); color:var(--ink); font-family:'Inter', sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  h1,h2,h3,.display{ font-family:'Space Grotesk', sans-serif; letter-spacing:-0.02em; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1000px; margin:0 auto; padding:0 28px; }
+  @media (prefers-reduced-motion: reduce){ *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; } }
+  body::before{ content:""; position:fixed; inset:0; background: radial-gradient(circle at 12% 8%, #8B6BFF2e, transparent 42%), radial-gradient(circle at 88% 20%, #FFC9401c, transparent 38%), radial-gradient(circle at 50% 95%, #2EE6A814, transparent 45%); pointer-events:none; z-index:0; }
+
+  nav{ position:sticky; top:0; z-index:50; backdrop-filter: blur(14px); background:#0D0C1299; border-bottom:1px solid var(--card-line); }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:76px; max-width:1180px; }
+  .logo{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:19px; cursor:pointer; }
+  .logo-mark{ width:32px; height:32px; object-fit:contain; filter:drop-shadow(0 4px 14px #8B6BFF55); }
+  .navlinks{ display:flex; gap:34px; font-size:14.5px; color:var(--ink-dim); font-weight:500; }
+  .navlinks a:hover{ color:var(--ink); }
+  .btn{ padding:11px 22px; border-radius:999px; font-weight:600; font-size:14.5px; display:inline-flex; align-items:center; gap:8px; cursor:pointer; border:none; }
+  .btn-primary{ background:linear-gradient(135deg, var(--violet), #6B4EE6); color:#fff; box-shadow:0 6px 24px #8B6BFF4d; }
+  .btn-ghost{ background:#ffffff10; color:var(--ink); border:1px solid #ffffff20; }
+  .nav-badge{ font-family:'JetBrains Mono'; font-size:10.5px; font-weight:700; background:var(--coral); color:#0D0C12; padding:3px 8px; border-radius:6px; margin-left:6px; }
+
+  .hero{ position:relative; z-index:1; padding:76px 0 32px; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:var(--violet-soft); border:1px solid #8B6BFF44; color:#C4B5FF; font-size:13px; font-weight:600; padding:7px 14px; border-radius:999px; margin-bottom:26px; }
+  .dot{ width:6px; height:6px; border-radius:50%; background:var(--mint); }
+  .hero h1{ font-size:clamp(32px, 4.4vw, 52px); line-height:1.1; font-weight:700; max-width:760px; }
+  .hero p.lede{ font-size:18px; color:var(--ink-dim); max-width:640px; margin:22px 0 0; line-height:1.65; }
+
+  .jump-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+  .jump-chip{
+    background:var(--card); border:1px solid var(--card-line); border-radius:999px;
+    padding:9px 18px; font-size:13.5px; font-weight:600; color:var(--ink-dim);
+    transition:border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .jump-chip:hover{ border-color:#8B6BFF66; color:var(--ink); transform:translateY(-1px); }
+
+  section{ position:relative; z-index:1; padding:56px 0; }
+  section.faq-section{ scroll-margin-top:96px; border-top:1px solid var(--card-line); }
+  section.faq-section:first-of-type{ border-top:none; padding-top:16px; }
+  .section-head{ max-width:680px; margin-bottom:32px; }
+  .section-eyebrow{ color:var(--gold); font-weight:700; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px; }
+  .section-head h2{ font-size:clamp(24px,3.4vw,32px); font-weight:700; }
+  .section-head p{ color:var(--ink-dim); margin-top:14px; font-size:15.5px; line-height:1.65; }
+
+  .faq-list{ display:flex; flex-direction:column; gap:14px; max-width:760px; }
+  .faq-item{ background:var(--card); border:1px solid var(--card-line); border-radius:14px; padding:20px 24px; }
+  .faq-item .q{ font-weight:600; font-size:15px; margin-bottom:8px; }
+  .faq-item .a{ color:var(--ink-dim); font-size:14.5px; line-height:1.65; }
+  .faq-item .a a{ color:var(--gold); font-weight:600; }
+  .faq-item .a ol{ margin:12px 0 4px; padding-left:22px; }
+  .faq-item .a ol li{ margin-bottom:6px; }
+  .faq-item .a ol li::marker{ color:var(--gold); font-weight:700; }
+  .faq-item .sub-label{ display:block; font-weight:600; color:var(--ink); font-size:14px; margin:16px 0 4px; }
+  .faq-item .sub-label:first-child{ margin-top:0; }
+
+  .empty-note{ color:var(--ink-faint); font-size:14.5px; line-height:1.65; max-width:640px; }
+
+  footer{ position:relative; z-index:1; padding:44px 0 40px; border-top:1px solid var(--card-line); }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; color:var(--ink-faint); font-size:13.5px; flex-wrap:wrap; gap:12px; max-width:1180px; }
+
+  @media (max-width:640px){
+    .wrap{ padding:0 18px; }
+    nav .wrap{ height:66px; }
+    .logo-mark{ width:26px; height:26px; }
+    .navlinks{ display:none; }
+    .hero{ padding:44px 0 24px; }
+    section{ padding:40px 0; }
+    .faq-item{ padding:18px 18px; }
+    footer .wrap{ flex-direction:column; text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="/" class="logo"><img src="/assets/logo-mark.png" alt="FilsOnly" class="logo-mark" /> FilsOnly <span class="nav-badge">BETA</span></a>
+    <div class="navlinks">
+      <a href="/#how">How it works</a>
+      <a href="/#compare">Pricing</a>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+    <a href="/#waitlist" class="btn btn-primary">Join the private beta</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> Beta — already in testers' hands</div>
+    <h1>FAQ &amp; Help</h1>
+    <p class="lede">Everything below follows the same four steps as the homepage — connect your inbox, add your AI key, let it remember what matters, and get nudged before something slips. Jump to whichever one you're stuck on.</p>
+    <div class="jump-row">
+      <a href="#step-1" class="jump-chip">1. Connect your inbox</a>
+      <a href="#step-2" class="jump-chip">2. Add your AI key</a>
+      <a href="#step-3" class="jump-chip">3. It remembers what matters</a>
+      <a href="#step-4" class="jump-chip">4. Get nudged, not buried</a>
+      <a href="#other-questions" class="jump-chip">Other questions</a>
+    </div>
+  </div>
+</header>
+
+<section class="faq-section" id="step-1">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Step 1</div>
+      <h2>Connect your inbox</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="q">How do I connect Gmail or Outlook?</div>
+        <div class="a">Open FilsOnly and tap "Sign in with Google" or "Sign in with Microsoft" on the welcome screen. You'll be taken to your provider's real sign-in page — FilsOnly never sees your password, only a secure sign-in token.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Can I connect both Gmail and Outlook?</div>
+        <div class="a">FilsOnly shows one inbox at a time. If you switch providers later (Settings → Disconnect), your previous provider's local data is cleared and you can connect the other one fresh.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Is my inbox stored anywhere?</div>
+        <div class="a">No — FilsOnly doesn't run a backend that stores your inbox. Everything stays on your device. See our <a href="/privacy.html">privacy policy</a> for full details.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="step-2">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Step 2</div>
+      <h2>Add your AI key</h2>
+      <p>FilsOnly runs on your own AI provider key — Anthropic (Claude) or OpenAI (GPT). You're billed directly by them, at cost, with no markup from FilsOnly. Here's how to get one, step by step.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="q">Getting an API key</div>
+        <div class="a">
+          <span class="sub-label">Anthropic (Claude)</span>
+          <ol>
+            <li>Go to <a href="https://console.anthropic.com/" target="_blank" rel="noopener">console.anthropic.com</a> and sign in or create an account</li>
+            <li>Go to Settings → Billing, add a payment method (a small amount like $5 is enough to start — FilsOnly's usage is typically well under a dollar a month)</li>
+            <li>Go to Settings → API Keys → Create Key</li>
+            <li>Name it something like "filsonly" so you recognize it later</li>
+            <li>Copy the key immediately — it's only shown once</li>
+            <li>Paste it into FilsOnly's Settings → API Key field, tap Save</li>
+          </ol>
+          <span class="sub-label">OpenAI</span>
+          <ol>
+            <li>Go to <a href="https://platform.openai.com/" target="_blank" rel="noopener">platform.openai.com</a> and sign in or create an account</li>
+            <li>Choose a plan when prompted — "Prototype" ($5 minimum) is enough for normal use</li>
+            <li>Go to Settings → API Keys → Create new secret key</li>
+            <li>Name it, then copy the key immediately — it's only shown once</li>
+            <li>Paste it into FilsOnly's Settings → API Key field, tap Save</li>
+          </ol>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Is it safe to paste my key into the app?</div>
+        <div class="a">Yes — it's stored securely on your device (not sent to FilsOnly's servers) and used only to talk directly to your chosen AI provider.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">What does this actually cost me?</div>
+        <div class="a">Typically a fraction of a subscription-based tool — around 0.8 fils a day for normal use, billed directly by your provider, not FilsOnly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="step-3">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Step 3</div>
+      <h2>It remembers what matters</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="q">How long does FilsOnly remember a thread?</div>
+        <div class="a">Automatically, for 7 days — most follow-ups happen within a week.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">What if I need to remember something older?</div>
+        <div class="a">Tag the thread (the "Track" button, above the reply box, or from an email's options) to keep it remembered indefinitely, even after it's older than 7 days.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">How do I untag something?</div>
+        <div class="a">Go to the Closed tab and tap the "Tracked" pill on that message to remove it from tracking.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="step-4">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Step 4</div>
+      <h2>Get nudged, not buried</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="q">How do nudges work?</div>
+        <div class="a">FilsOnly checks periodically for threads that have gone quiet — where someone's waiting on your reply — and notifies you, even if the app is closed.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Why didn't I get a notification for something I expected?</div>
+        <div class="a">A few common reasons: background sync may need to be turned on in Settings, the app needs a little time after install before its first real check runs, or (less commonly) the email may have landed in Spam/Junk on your provider's side rather than your main inbox — FilsOnly only sees what's in your Primary/Focused inbox.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Does this drain my battery?</div>
+        <div class="a">Background checks are lightweight and infrequent — but if you'd rather not use this, you can turn Background Sync off in Settings any time.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="other-questions">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Other questions</div>
+      <h2>Everything else</h2>
+      <p>This section grows as beta testers report things through the <a href="/beta-feedback.html" style="color:var(--gold); font-weight:600;">feedback form</a> — check back if you don't see your question above yet.</p>
+    </div>
+    <p class="empty-note">Nothing here yet — this is where tester-reported issues and edge cases will land as the beta progresses.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="flex-direction:column; align-items:flex-start; gap:22px;">
+    <div style="display:flex; gap:40px; flex-wrap:wrap; font-size:13px;">
+      <div>
+        <div style="color:var(--ink-faint); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px;">By inbox</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="/email-follow-up-reminder">Email follow-up reminder</a>
+          <a href="/gmail-follow-up-reminder">Gmail follow-up reminder</a>
+          <a href="/outlook-follow-up-reminder">Outlook follow-up reminder</a>
+        </div>
+      </div>
+      <div>
+        <div style="color:var(--ink-faint); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px;">By use case</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="/ai-email-follow-up-assistant">AI email follow-up assistant</a>
+          <a href="/email-follow-up-automation">Email follow-up automation</a>
+          <a href="/track-unanswered-emails">Track unanswered emails</a>
+          <a href="/forgot-to-reply-to-email">Forgot to reply to an email?</a>
+        </div>
+      </div>
+      <div>
+        <div style="color:var(--ink-faint); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px;">By role</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="/for-sales">For sales</a>
+          <a href="/for-consultants">For consultants</a>
+          <a href="/for-founders">For founders</a>
+          <a href="/for-recruiters">For recruiters</a>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; width:100%; padding-top:18px; border-top:1px solid var(--card-line);">
+      <div>© 2026 FilsOnly &middot; Built by Navvin S Bhalla &middot; Dubai, UAE</div>
+      <div><a href="mailto:hello@filsonly.com">hello@filsonly.com</a> · <a href="/privacy.html">Privacy</a> · filsonly.com</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

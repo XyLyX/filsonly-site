@@ -245,8 +245,8 @@
     opacity:0.35; z-index:0;
   }
   .step{
-    position:relative; z-index:1; background:var(--card); border:1px solid var(--card-line); border-radius:var(--radius);
-    padding:28px 22px; margin:0 10px; transition:transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    display:block; position:relative; z-index:1; background:var(--card); border:1px solid var(--card-line); border-radius:var(--radius);
+    padding:28px 22px; margin:0 10px; cursor:pointer; transition:transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
   .step:hover{ transform:translateY(-6px); border-color:#8B6BFF55; box-shadow:0 20px 40px -18px #8B6BFF44; }
   .step .icon-badge{
@@ -484,30 +484,30 @@
       <h2>Connect once. It quietly keeps watch.</h2>
     </div>
     <div class="steps">
-      <div class="step">
+      <a href="/faq.html#step-1" class="step">
         <div class="icon-badge">🔗</div>
         <span class="num">STEP 01</span>
         <h3>Connect your inbox</h3>
         <p>Outlook or Gmail, your choice. Sign in once — FilsOnly doesn't operate a backend that stores your inbox.</p>
-      </div>
-      <div class="step">
+      </a>
+      <a href="/faq.html#step-2" class="step">
         <div class="icon-badge">🔑</div>
         <span class="num">STEP 02</span>
         <h3>Add your AI key</h3>
         <p>Bring your own Anthropic or OpenAI key. You're billed directly, at cost.</p>
-      </div>
-      <div class="step">
+      </a>
+      <a href="/faq.html#step-3" class="step">
         <div class="icon-badge">🧠</div>
         <span class="num">STEP 03</span>
         <h3>It remembers what matters</h3>
         <p>Threads are tracked automatically for <span class="highlight">7 days</span> — most follow-ups happen within a week. Tag anything older to keep it remembered indefinitely.</p>
-      </div>
-      <div class="step">
+      </a>
+      <a href="/faq.html#step-4" class="step">
         <div class="icon-badge">🔔</div>
         <span class="num">STEP 04</span>
         <h3>Get nudged, not buried</h3>
         <p>When something's gone quiet, FilsOnly tells you — with a one-tap shortcut to draft the reply.</p>
-      </div>
+      </a>
     </div>
   </div>
 </section>
