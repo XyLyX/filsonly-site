@@ -1,0 +1,21 @@
+<svg viewBox="0 0 330 90" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <clipPath id="clipPlay">
+      <rect x="0" y="0" width="330" height="90" rx="14"/>
+    </clipPath>
+  </defs>
+  <g>
+    <rect x="0" y="0" width="330" height="90" rx="14" fill="#151B2C" stroke="#2A3350" stroke-width="1.5"/>
+    <g clip-path="url(#clipPlay)">
+      <polygon points="255,-10 340,-10 340,75" fill="#F59E0B"/>
+      <text x="305" y="26" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#0B0F1A" text-anchor="middle" transform="rotate(45 305 26)">BETA</text>
+    </g>
+    <polygon points="34,28 34,62 62,45" fill="url(#brandGrad)"/>
+    <text x="80" y="40" font-family="Arial, sans-serif" font-size="13" fill="#8890B0">GET IT ON</text>
+    <text x="80" y="64" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#F5F6FA">Google Play</text>
+  </g>
+</svg>

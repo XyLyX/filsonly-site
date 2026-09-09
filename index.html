@@ -126,6 +126,13 @@
   .hero p.lede{ font-size:18px; color:var(--ink-dim); max-width:480px; margin:22px 0 32px; line-height:1.65; }
   .hero-cta{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
   .hero-cta .btn{ padding:15px 26px; font-size:15px; }
+  .store-badges{ display:flex; gap:14px; margin-top:22px; flex-wrap:wrap; }
+  .store-badge{ display:inline-block; width:180px; line-height:0; border-radius:14px; transition:transform 0.2s ease, filter 0.2s ease; }
+  .store-badge img{ width:100%; height:auto; display:block; }
+  a.store-badge:hover{ transform:translateY(-2px); filter:drop-shadow(0 8px 20px #8B6BFF44); }
+  .store-badge--disabled{ cursor:default; pointer-events:none; }
+  @media (max-width:400px){ .store-badge{ width:160px; } }
+
   .provider-row{ display:flex; align-items:center; gap:12px; margin-top:34px; font-size:13.5px; color:var(--ink-faint); flex-wrap:wrap; }
   .provider-pill{
     display:flex; align-items:center; gap:8px; background:var(--card); border:1px solid var(--card-line);
@@ -336,6 +343,18 @@
         <a href="#memory" class="btn btn-ghost">See how it remembers</a>
       </div>
       <div style="margin-top:14px; font-size:13px; color:var(--ink-faint);">Free during beta &middot; Gmail &amp; Outlook &middot; Bring your own AI key</div>
+
+      <div class="store-badges">
+        <!-- TODO: replace with the Play Store Internal Testing opt-in URL once it exists.
+             Points at the FAQ in the meantime rather than a dead link. -->
+        <a href="/faq#step-1" class="store-badge" aria-label="Get FilsOnly on Google Play (Beta)">
+          <img src="/assets/badge-google-play.svg" alt="Get it on Google Play — Beta" width="330" height="90" />
+        </a>
+        <span class="store-badge store-badge--disabled" role="img" aria-label="Coming soon on the App Store">
+          <img src="/assets/badge-app-store.svg" alt="Coming soon on the App Store" width="330" height="90" />
+        </span>
+      </div>
+
       <div class="provider-row">
         Works with
         <span class="provider-pill">
