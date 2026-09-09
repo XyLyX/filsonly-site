@@ -44,6 +44,7 @@
     background:var(--card); border:1px solid #8B6BFF33; border-radius:14px;
     padding:20px 22px; margin:24px 0; color:var(--ink);
   }
+  ol{ padding-left:22px; margin-bottom:14px; }
   footer{
     margin-top:48px; padding-top:24px; border-top:1px solid #ffffff14;
     color:#726C8C; font-size:13px;
@@ -119,6 +120,18 @@
 
   <h2>Data deletion</h2>
   <p>Because your data is stored locally on your device, uninstalling the app removes all locally stored data. Disconnecting your Microsoft or Google account within the app (or from that account's own security settings) revokes the app's access to your email and calendar.</p>
+
+  <h2 id="delete-account">Deleting your account and data</h2>
+  <p>FilsOnly doesn't operate user accounts on a central server — there's nothing to delete on our end, because nothing is stored there. Your account is your Gmail or Outlook sign-in, and your data lives only on your device.</p>
+  <p>To delete your account and all associated data:</p>
+  <ol>
+    <li>Open FilsOnly and go to Settings</li>
+    <li>Tap "Disconnect [Google/Outlook] account" — this immediately clears all locally stored email data, triage history, and tracked threads</li>
+    <li>Uninstall the app to remove all remaining local data, including your API key</li>
+  </ol>
+  <p>This takes effect immediately — no waiting period, no request needed, no email to send us. If you have any trouble, contact <a href="mailto:hello@filsonly.com">hello@filsonly.com</a>.</p>
+  <p><strong>What's deleted:</strong> all synced email content, triage labels, tracked threads, and your API key, all stored locally on your device.</p>
+  <p><strong>What's not affected:</strong> your actual Gmail/Outlook account and its emails (FilsOnly never modifies your real inbox on your provider's side), and your AI provider account (Anthropic/OpenAI), which you manage separately.</p>
 
   <h2>Children's privacy</h2>
   <p>FilsOnly is not directed at children under 13, and we do not knowingly collect data from children.</p>
