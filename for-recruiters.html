@@ -121,10 +121,10 @@
   <div class="wrap">
     <a href="/" class="logo"><img src="/assets/logo-mark.png" alt="FilsOnly" class="logo-mark" /> FilsOnly <span class="nav-badge">BETA</span></a>
     <div class="navlinks">
-      <a href="/#commitments">Pricing</a>
+      <a href="/#beta">Beta access</a>
       <a href="/privacy.html">Privacy</a>
     </div>
-    <a href="#waitlist" class="btn btn-primary">Join the private beta</a>
+    <a href="#waitlist" class="btn btn-primary">Join the current beta</a>
   </div>
 </nav>
 
@@ -134,7 +134,7 @@
     <h1>For recruiters, a quiet thread can cost <span class="accent">a placement.</span></h1>
     <p class="lede">Candidates and clients go quiet fast, and recruiting runs on too many parallel conversations to track by memory. FilsOnly watches every thread and nudges you before one goes cold.</p>
     <div class="hero-cta">
-      <a href="#waitlist" class="btn btn-primary">Join the private beta</a>
+      <a href="#waitlist" class="btn btn-primary">Join the current beta</a>
       <a href="/" class="btn btn-ghost">See how FilsOnly works</a>
     </div>
     <div style="margin-top:14px; font-size:13px; color:var(--ink-faint);">Free during beta &middot; Gmail &amp; Outlook &middot; Bring your own AI key</div>
@@ -170,8 +170,8 @@
     <div class="trust-band">
       <div class="trust-head">Private by design</div>
       <div class="trust-grid">
-        <div class="trust-item"><span class="check">✓</span> Email stays between your device and Gmail/Outlook</div>
-        <div class="trust-item"><span class="check">✓</span> No FilsOnly backend server holds your inbox</div>
+        <div class="trust-item"><span class="check">✓</span> Inbox is not stored in a general FilsOnly backend; selected text may be processed by AI services</div>
+        <div class="trust-item"><span class="check">✓</span> <a href="/privacy.html">App and website data practices</a></div>
         <div class="trust-item"><span class="check">✓</span> Bring your own AI key — no markup, billed at cost</div>
         <div class="trust-item"><span class="check">✓</span> Free during beta</div>
       </div>
@@ -187,13 +187,13 @@
       <h2>Get on the list</h2>
       <p>We're onboarding a limited number of beta users. Drop your email and we'll reach out with access.</p>
       <form name="beta-waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="waitlistForm">
-        <input type="hidden" name="form-name" value="beta-waitlist" />
+        <input type="hidden" name="form-name" value="beta-waitlist" /><input type="hidden" name="interest" value="current-beta" />
         <p class="hidden-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
         <div class="form-row">
           <input type="text" name="name" placeholder="Your name" required />
           <input type="email" name="email" placeholder="you@example.com" required />
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:16px;">Join the beta waitlist</button>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:16px;">Request current beta access</button>
       </form>
       <div id="formSuccess" class="form-success">
         <div class="check-big">✓</div>
@@ -253,7 +253,7 @@
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(data).toString(),
       })
-        .then(() => { document.querySelector('.waitlist-card').classList.add('submitted'); })
+        .then(response => { if (!response.ok) throw new Error('Submission failed'); document.querySelector('.waitlist-card').classList.add('submitted'); })
         .catch(() => { alert("Something went wrong — please try again or email hello@filsonly.com directly."); });
     });
   }

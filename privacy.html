@@ -61,13 +61,17 @@
   </header>
 
   <h1>Privacy Policy</h1>
-  <div class="updated">Last updated: August 19, 2026</div>
+  <div class="updated">Last updated: September 26, 2026</div>
 
-  <p>FilsOnly ("we," "our," or "the app") is a personal AI executive assistant application. This policy explains what data the app accesses, how it's used, and — just as importantly — what we deliberately do <strong>not</strong> collect or store.</p>
+  <p>FilsOnly ("we," "our," or "the app") provides an email assistant and a website for beta access and feedback. This policy explains these separate data flows, what the app accesses, and what the website collects when you submit a form.</p>
 
   <div class="callout">
-    <strong>The short version:</strong> FilsOnly is built on a "bring-your-own-key" model. Your email data, calendar data, and AI usage are processed directly between your device, your email provider's servers (Microsoft or Google), and your chosen AI provider's servers. We do not operate a general backend server, and we do not receive, store, or have access to your email content, calendar data, or AI conversations at any point — with one narrow exception: a stateless function we operate generates numerical "embeddings" for memory/search features, described below. This function stores nothing and sees only text you send it for conversion, never your inbox directly.
+    <strong>The short version:</strong> The current app does not store your inbox in a general FilsOnly backend. App data is kept locally on your device, while selected text may go to your chosen AI provider or to our stateless embedding function as explained below. Separately, if you request beta access or send feedback through this website, your submitted name, email address, selected beta interest, and feedback are collected through Netlify Forms so we can manage those requests. Disconnecting or uninstalling the app does not delete website form submissions.
   </div>
+
+  <h2>Website beta requests and feedback</h2>
+  <p>When you submit a beta request on filsonly.com, we collect the name and email address you provide and whether you selected the current beta or the V2 interest list. When you submit the optional beta feedback form, we collect the answers you provide and any optional contact details. These submissions are processed and stored by our website form provider, Netlify, and are accessible to the FilsOnly team for beta access, product updates related to your request, and responding to feedback. Website forms do not give us access to your inbox, AI key, or app data.</p>
+  <p>To ask about a website submission or request its deletion, email <a href="mailto:hello@filsonly.com">hello@filsonly.com</a>. A request to remove website form data is separate from disconnecting the app.</p>
 
   <h2>What data the app accesses</h2>
 
@@ -103,35 +107,35 @@
   <p>If you'd prefer not to use this feature, you can decline to use memory/search features within the app; core triage and reply functionality does not depend on it.</p>
 
   <h2>What data is stored, and where</h2>
-  <p>All data used by FilsOnly is stored <strong>locally on your device</strong> using on-device storage (SQLite) and secure encrypted storage (for your API key). This includes:</p>
+  <p>Data used by the current app is stored <strong>locally on your device</strong> using on-device storage (SQLite) and secure encrypted storage (for your API key). This includes:</p>
   <ul>
     <li>Cached email triage labels and status (new / replied / closed)</li>
     <li>Follow-up and reminder entries you create</li>
     <li>Your AI provider settings and API key (stored using your device's secure credential storage)</li>
     <li>Sign-in tokens for your Microsoft account</li>
   </ul>
-  <p>None of this data is transmitted to or stored on any server operated by FilsOnly, because FilsOnly does not operate a backend server for personal use of the app.</p>
+  <p>The app does not use a general FilsOnly backend to store your inbox. The AI and embedding transfers described above are exceptions to purely local processing. Website form submissions are a separate data set stored through Netlify Forms.</p>
 
   <h2>Background sync and notifications</h2>
-  <p>If you enable background sync, the app periodically checks your inbox in the background (even when closed) using the same direct device-to-Microsoft and device-to-AI-provider connections described above, and may show you a local notification for urgent items. This processing happens entirely on your device; no data is sent to us as part of this feature.</p>
+  <p>If you enable background sync, the app periodically checks your inbox in the background (even when closed) and may show you a local notification for urgent items. It uses the app connections and processing services described above; we do not store a copy of your inbox for background sync.</p>
 
   <h2>Data sharing</h2>
-  <p>We do not sell, rent, or share your data with third parties. We have no access to your email content, calendar data, or AI usage to share in the first place.</p>
+  <p>We do not sell your submitted website information or app inbox data. Website form submissions are processed by Netlify so we can receive and manage them. App features may send selected content to your chosen AI provider or to the embedding service described above; those services process the text needed for the feature. We do not have direct access to your full inbox through the website.</p>
 
   <h2>Data deletion</h2>
   <p>Because your data is stored locally on your device, uninstalling the app removes all locally stored data. Disconnecting your Microsoft or Google account within the app (or from that account's own security settings) revokes the app's access to your email and calendar.</p>
 
   <h2 id="delete-account">Deleting your account and data</h2>
-  <p>FilsOnly doesn't operate user accounts on a central server — there's nothing to delete on our end, because nothing is stored there. Your account is your Gmail or Outlook sign-in, and your data lives only on your device.</p>
-  <p>To delete your account and all associated data:</p>
+  <p>The current app does not create a general FilsOnly account that stores your inbox. Its local data can be removed from your device using the steps below. If you also submitted a website beta request or feedback, contact us separately to request deletion of that form submission.</p>
+  <p>To remove local app data and revoke access:</p>
   <ol>
     <li>Open FilsOnly and go to Settings</li>
     <li>Tap "Disconnect [Google/Outlook] account" — this immediately clears all locally stored email data, triage history, and tracked threads</li>
     <li>Uninstall the app to remove all remaining local data, including your API key</li>
   </ol>
-  <p>This takes effect immediately — no waiting period, no request needed, no email to send us. If you have any trouble, contact <a href="mailto:support@filsonly.com">support@filsonly.com</a>.</p>
+  <p>These steps remove local app data from your device; they do not remove a website form submission. For help with the app or a website data request, contact <a href="mailto:hello@filsonly.com">hello@filsonly.com</a>.</p>
   <p><strong>What's deleted:</strong> all synced email content, triage labels, tracked threads, and your API key, all stored locally on your device.</p>
-  <p><strong>What's not affected:</strong> your actual Gmail/Outlook account and its emails (FilsOnly never modifies your real inbox on your provider's side), and your AI provider account (Anthropic/OpenAI), which you manage separately.</p>
+  <p><strong>What's not affected:</strong> your actual Gmail/Outlook account and its emails, your AI provider account (Anthropic/OpenAI), and any beta or feedback submission you sent through this website. Request deletion of a website submission using the contact address above.</p>
 
   <h2>Children's privacy</h2>
   <p>FilsOnly is not directed at children under 13, and we do not knowingly collect data from children.</p>
